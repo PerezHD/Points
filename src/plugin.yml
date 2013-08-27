@@ -1,0 +1,10 @@
+name: Points
+description: Point reward system for the fragmc!
+website: www.fragmc.com
+authors: [Harry5573]
+main: com.harry5573.points.Main
+version: 1.2
+commands:
+  points:
+    description: Main points command
+    aliases: [tntpoints, mctntpoints, tnt]
