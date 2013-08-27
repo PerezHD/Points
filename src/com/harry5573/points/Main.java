@@ -49,14 +49,14 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        System.out.println("[TnTPoints] Enabled");
+        System.out.println("[Points] Enabled");
 
         getServer().getPluginManager().registerEvents(this, this);
 
         try {
             loadUsers();
         } catch (IOException ex) {
-            System.out.println("[TnTPoints] Error while loading users file");
+            System.out.println("[Points] Error while loading users file");
         }
         saveDefaultConfig();
 
@@ -65,7 +65,7 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        System.out.println("[TnTPoints] Disabled");
+        System.out.println("[Points] Disabled");
 
         getServer().clearRecipes();
     }
@@ -95,16 +95,16 @@ public class Main extends JavaPlugin implements Listener {
         }
         try {
             users.save(usersfile);
-            System.out.println("[TnTPoints] Users saved!");
+            System.out.println("[Points] Users saved!");
         } catch (IOException ex) {
-            System.out.println("[TnTPoints] Error while saving users file");
+            System.out.println("[Points] Error while saving users file");
         }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(PlayerJoinEvent e) {
         if (!getUsers().contains("Users." + e.getPlayer().getName())) {
-            System.out.println("[TnTPoints] No user data found for " + e.getPlayer().getName() + " creating...");
+            System.out.println("[Points] No user data found for " + e.getPlayer().getName() + " creating...");
             getUsers().set("Users." + e.getPlayer().getName(), 0);
             saveUsers();
         }
@@ -116,7 +116,7 @@ public class Main extends JavaPlugin implements Listener {
         if (sender instanceof Player) {
             p = (Player) sender;
         }
-        if (command.getName().equalsIgnoreCase("tpoints")) {
+        if (command.getName().equalsIgnoreCase("points")) {
             String prefix = getConfig().getString("prefix").replaceAll("(&([a-f0-9]))", "\u00A7$2");
 
             if (args.length == 0) {
@@ -215,7 +215,7 @@ public class Main extends JavaPlugin implements Listener {
 
         List regenlore = new ArrayList();
         regenlore.add(ChatColor.GREEN + "Uses left: 5");
-        regenlore.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         regenmeta.setLore(regenlore);
         regenmeta.setDisplayName(ChatColor.LIGHT_PURPLE + "Potion Staff Of Regeneration");
@@ -225,7 +225,7 @@ public class Main extends JavaPlugin implements Listener {
         ShapelessRecipe regenrecipie = new ShapelessRecipe(staffregen).addIngredient(Material.STICK).addIngredient(Material.STICK).addIngredient(Material.GHAST_TEAR);
         getServer().addRecipe(regenrecipie);
 
-        System.out.println("[TnTPoints] Added custom recipipes");
+        System.out.println("[points] Added custom recipipes");
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -234,23 +234,23 @@ public class Main extends JavaPlugin implements Listener {
 
         List regenlore5 = new ArrayList();
         regenlore5.add(ChatColor.GREEN + "Uses left: 5");
-        regenlore5.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore5.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         List regenlore4 = new ArrayList();
         regenlore4.add(ChatColor.GREEN + "Uses left: 4");
-        regenlore4.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore4.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         List regenlore3 = new ArrayList();
         regenlore3.add(ChatColor.GREEN + "Uses left: 3");
-        regenlore3.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore3.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         List regenlore2 = new ArrayList();
         regenlore2.add(ChatColor.GREEN + "Uses left: 2");
-        regenlore2.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore2.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         List regenlore1 = new ArrayList();
         regenlore1.add(ChatColor.GREEN + "Uses left: 1");
-        regenlore1.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+        regenlore1.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
         if (!e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             return;
@@ -292,7 +292,7 @@ public class Main extends JavaPlugin implements Listener {
             regenlorelist4.clear();
 
             regenlorelist4.add(ChatColor.GREEN + "Uses left: 4");
-            regenlorelist4.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+            regenlorelist4.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
 
             newmeta.setLore(regenlorelist4);
@@ -310,7 +310,7 @@ public class Main extends JavaPlugin implements Listener {
             List regenlorelist3 = new ArrayList();
             regenlorelist3.clear();
             regenlorelist3.add(ChatColor.GREEN + "Uses left: 3");
-            regenlorelist3.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+            regenlorelist3.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
             newmeta1.setLore(regenlorelist3);
             p.getItemInHand().setItemMeta(newmeta1);
@@ -327,7 +327,7 @@ public class Main extends JavaPlugin implements Listener {
             List regenlorelist2 = new ArrayList();
             regenlorelist2.clear();
             regenlorelist2.add(ChatColor.GREEN + "Uses left: 2");
-            regenlorelist2.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+            regenlorelist2.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
             newmeta2.setLore(regenlorelist2);
             p.getItemInHand().setItemMeta(newmeta2);
@@ -344,7 +344,7 @@ public class Main extends JavaPlugin implements Listener {
             List regenlorelist1 = new ArrayList();
             regenlorelist1.clear();
             regenlorelist1.add(ChatColor.GREEN + "Uses left: 1");
-            regenlorelist1.add(ChatColor.BLUE + "Costs 1 TnTPoint Per Cast");
+            regenlorelist1.add(ChatColor.BLUE + "Costs 1 point Per Cast");
 
             newmeta3.setLore(regenlorelist1);
             p.getItemInHand().setItemMeta(newmeta3);
